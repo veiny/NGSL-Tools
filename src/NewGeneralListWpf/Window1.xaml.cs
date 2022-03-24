@@ -32,7 +32,7 @@ namespace NewGeneralListWpf
         {
             Button button = (Button)sender;
             btn_convert.IsEnabled = false;
-            OpenFileDialog ofd = new OpenFileDialog();
+            OpenFileDialog ofd = new OpenFileDialog() { InitialDirectory = Environment.CurrentDirectory.ToString() };
             if (ofd.ShowDialog() == true)
             {
                 if (button.Name == "btn_selectfilengsl")
@@ -53,15 +53,13 @@ namespace NewGeneralListWpf
         {
             List<string> listfull = new NGSL.NewGeneralServiceList(ngsl_file).Words;
             List<string> listp = new NGSL.NewGeneralServiceList(ngsl_pfile).Words;
-            List<String> listwithoutp = new List<string>();
+            List<String> listwithoutp = new List<string> { };
             foreach (string s in listfull)
             {
-                //已知问题:
-                //Contains只是包含,并不能完全匹配,未找到优化算法!
-                if (!listp.Contains(s))
-                {
-                    listwithoutp.Add(s);
-                }
+
+                //2.use List Except
+                listwithoutp = listfull.Except<string>(listp).ToList();
+
             }
             StringBuilder sb = new StringBuilder();
             foreach (string s in listwithoutp)

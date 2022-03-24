@@ -33,7 +33,7 @@ namespace NewGeneralListWpf
         }
         private void btn_selectfile_Click(object sender, RoutedEventArgs e)
         {
-            OpenFileDialog ofd = new OpenFileDialog();
+            OpenFileDialog ofd = new OpenFileDialog() { InitialDirectory = Environment.CurrentDirectory.ToString() };
             if (ofd.ShowDialog() == true)
             {
                 tb_filestring.Text = filestring = ofd.FileName;
