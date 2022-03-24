@@ -5,5 +5,4 @@ the most important words for second language learners of English
 
 About **NGSL** Please look at this page http://www.newgeneralservicelist.org/
 
-## Next 添加中文释义(zh-cn_definitions)
-
+## Next (zh-cn_definitions)
