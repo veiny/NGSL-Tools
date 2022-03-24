@@ -54,13 +54,9 @@ namespace NewGeneralListWpf
             List<string> listfull = new NGSL.NewGeneralServiceList(ngsl_file).Words;
             List<string> listp = new NGSL.NewGeneralServiceList(ngsl_pfile).Words;
             List<String> listwithoutp = new List<string> { };
-            foreach (string s in listfull)
-            {
 
-                //2.use List Except
-                listwithoutp = listfull.Except<string>(listp).ToList();
+            listwithoutp = listfull.Except<string>(listp).ToList();
 
-            }
             StringBuilder sb = new StringBuilder();
             foreach (string s in listwithoutp)
             {
@@ -73,7 +69,7 @@ namespace NewGeneralListWpf
             lab_ngsl_full.Text = "NGSL FUll:" + listfull.Count;
             lab_ngsl_p.Text = "NGSL-Spoken:" + listp.Count;
             lab_ngsl_withoutp.Foreground = Brushes.Red;
-            lab_ngsl_withoutp.Text = $"NGSL Without Spoken:{listwithoutp.Count}(truly:{listfull.Count - listp.Count}),error!";
+            lab_ngsl_withoutp.Text = $"NGSL Without Spoken:{listwithoutp.Count}(truly:{listfull.Count - listp.Count}),NGSL-Spoken more 23 word !";
         }
         private string LoadNGSL(string filename)
         {
